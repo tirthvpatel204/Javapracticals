@@ -103,7 +103,23 @@ LAB/
 ├── VendingMachine.java
 └── README.md
 ```
+## 📸 Program Outputs
 
+### 1️⃣ Rock Paper Scissors Lizard Spock
+
+![RPSLS Output](screenshots/rpsls-output.png)
+
+---
+
+### 2️⃣ Toll Booth Management System
+
+![Toll Booth Output](screenshots/tollbooth-output.png)
+
+---
+
+### 3️⃣ Vending Machine Simulation
+
+![Vending Machine Output](screenshots/vendingmachine-output.png)
 ---
 
 ## ▶️ How to Run
