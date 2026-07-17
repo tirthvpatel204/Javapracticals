@@ -1,8 +1,13 @@
-/*package Javapracticals.LAB-02.Pprb*/
+class Cinemashow 
+{
 
-public class Cinemashow {
-    public static void main(String[] args)
+    String title;
+    private int seatsAvailable;
+    private final int capacity;
+    private static int totalBooked=0;
+    CinemaShow(String title, int capacity) 
     {
-    System.out.println("Hi");
-}
-}
+        this.title=title;
+        this.capacity=capacity;
+        this.seatsAvailable=capacity;
+    }
