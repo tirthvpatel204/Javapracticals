@@ -9,7 +9,6 @@ public class TollBooth {
         Scanner sc = new Scanner(System.in);
 
         int total = 0;
-
         int bike = 0;
         int car = 0;
         int truck = 0;
@@ -23,8 +22,20 @@ public class TollBooth {
                 break;
             }
 
+            // Vehicle Number Validation
+            if (!number.matches("[A-Za-z0-9]+")) {
+                System.out.println("Invalid Vehicle Number! Use only letters and digits.");
+                continue;
+            }
+
             System.out.print("Enter Vehicle Type (bike/car/truck): ");
             String type = sc.next().toLowerCase();
+
+            // Vehicle Type Validation
+            if (!(type.equals("bike") || type.equals("car") || type.equals("truck"))) {
+                System.out.println("Invalid Vehicle Type!");
+                continue;
+            }
 
             Vehicle v = new Vehicle(number, type);
 
@@ -44,20 +55,21 @@ public class TollBooth {
                     total += 150;
                     truck++;
                     break;
-
-                default:
-                    System.out.println("Invalid Type");
             }
         }
 
-        System.out.println("Total Toll = " + total);
+        System.out.println("\n===== Toll Booth Report =====");
+        System.out.println("Total Toll Collected = " + total);
 
-        if (bike >= car && bike >= truck)
-            System.out.println("Most Frequent = bike");
-        else if (car >= bike && car >= truck)
-            System.out.println("Most Frequent = car");
-        else
-            System.out.println("Most Frequent = truck");
+        if (bike == 0 && car == 0 && truck == 0) {
+            System.out.println("No vehicles entered.");
+        } else if (bike >= car && bike >= truck) {
+            System.out.println("Most Frequent Vehicle = Bike");
+        } else if (car >= bike && car >= truck) {
+            System.out.println("Most Frequent Vehicle = Car");
+        } else {
+            System.out.println("Most Frequent Vehicle = Truck");
+        }
 
         sc.close();
     }
