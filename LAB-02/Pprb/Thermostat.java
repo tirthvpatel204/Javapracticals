@@ -1,65 +1,78 @@
-class Thermostat 
-{
-    private String loca;
-    private int temp;
+class Thermostat {
+
+    private String location;
+    private int temperature;
+
     private static final int min=16;
     private static final int max=30;
-    private static int actacount=0;
-
-    Thermostat(String loca, int startTemp) 
+    private static int actco=0;
+    Thermostat(String location, int startTemp) 
     {
-        this.loca=loca;
+        this.location = location;
 
         if (startTemp>=min && startTemp<=max)
-            temp=startTemp;
-        else
-            temp=22;
-           actacount++;
-    }
-    Thermostat(String loca) 
-    {
-        this(loca, 22);
-    }
+             {
+            this.temperature = startTemp;
+        } else {
+            this.temperature = 22;
+        }
 
+        actco++;
+    }
+    Thermostat(String location) 
+    {
+        this(location, 22);
+    }
     void raise() 
     {
-        if (temp<max)
-            temp++;
-        else
-            System.out.println("Already at maximum (30)");
+        if (temperature<max) 
+        {
+            temperature++;
+        } else 
+            {
+            System.out.println(location + " is already at maximum temperature (" + MAX_TEMP + "°C)");
+        }
     }
-
     void lower() 
     {
-        if (temp>min)
-            temp--;
-        else
-            System.out.println("Already at minimum (16)");
+        if (temperature>min) 
+        {
+            temperature--;
+        } else 
+        {
+            System.out.println(location + " is already at minimum temperature (" + MIN_TEMP + "°C)");
+        }
     }
-
-    void print()
+    void display() 
     {
-        System.out.println(loca + " Temperature = " + temp);
+        System.out.println(location + " Temperature = " + temperature + "°C");
     }
-
     static int getActiveCount() 
     {
-        return actacount;
+        return actco;
     }
-    public static void main(String[] args)
-     {
-        Thermostat t1 = new Thermostat("Hall");
-        Thermostat t2 = new Thermostat("Bedroom", 25);
-        for (int i = 1; i <= 10; i++) 
+
+    public static void main(String[] args) 
+    {
+
+        Thermostat hall = new Thermostat("Hall");
+        Thermostat bedroom = new Thermostat("Bedroom", 25);
+
+        System.out.println("Increasing Hall Temperature:");
+        for (int i=0; i<10; i++) 
         {
-            t1.raise();
-            t1.print();
+            hall.raise();
+            hall.display();
         }
-        for (int i = 1; i <= 20; i++) 
+
+        System.out.println("\nDecreasing Hall Temperature:");
+        for (int i=0; i<20; i++) 
         {
-            t1.lower();
-            t1.print();
+            hall.lower();
+            hall.display();
         }
-        System.out.println("Active Thermostats = " + Thermostat.getActiveCount());
+        System.out.println("\nBedroom Status:");
+        bedroom.display();
+        System.out.println("\nActive Thermostats = " + Thermostat.getActiveCount());
     }
 }
