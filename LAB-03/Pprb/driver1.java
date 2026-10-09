@@ -27,7 +27,7 @@ public class driver1 {
                 count++;
             }
         }
-
+        System.out.println("-------------------------");
         System.out.println("Distinct: " + count);
     }
 }
